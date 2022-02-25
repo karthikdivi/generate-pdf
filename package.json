@@ -1,0 +1,22 @@
+{
+  "name": "generate-pdf",
+  "version": "1.0.0",
+  "description": "generate pdf",
+  "main": "index.js",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "start": "npx functions-framework --target=generate_pdf",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@google-cloud/debug-agent": "^5.0.0",
+    "puppeteer": "^5.5.0"
+  },
+  "author": "Karthik Divi",
+  "license": "ISC",
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^2.1.1"
+  }
+}
