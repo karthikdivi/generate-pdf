@@ -7,13 +7,17 @@ exports.generate_pdf = async (req, res) => {
     }
     var browser;
     try {
+        console.time('test');
         browser = await puppeteer.launch({  headless: true, args: [`--window-size=1920,1080`], args: ['--no-sandbox'] });
         let page = await browser.newPage();
-        await page.goto(req.query.url);
+        await page.goto(req.query.url, {
+            waitUntil: 'networkidle0',
+        });
         await page.emulateMediaType("screen");
         const pdfBuffer = await page.pdf({  printBackground: true });
         res.set("Content-Type", "application/pdf");
         res.status(200).send(pdfBuffer);
+        console.timeEnd('test');
 
     } catch (e) {
         console.log(e);
